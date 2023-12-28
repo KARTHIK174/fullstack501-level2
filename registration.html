@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPSTONE project</title>
+    <style>
+        .box1{
+            border:4px solid black;
+            margin-left: 30%;
+            margin-right: 30%;
+            width: auto;
+            height: auto;
+            padding: 15px;
+            background-color: aqua;
+        }
+        .box2{
+            border:4px solid black;
+            margin-left: 25%;
+            margin-right: 30%;
+            background-color: antiquewhite;
+            width: 50%;
+            height: auto;
+        }
+        
+        #display{
+            font-size: 32px;
+        }
+        #th1{
+        
+            width: 30%;
+            padding: 15px;
+        }
+        #rf{
+            padding-left: 155px;
+            text-decoration: underline;
+        }
+        form{
+            padding-left: 40px;
+        }
+        label{
+            font-size: 20px;
+            
+        }
+        #h{
+            margin-left: 36%;
+            font-size: 30px;
+            font-style: oblique;
+        }
+        #in1{
+            font-size: 30px;
+            margin-top: -20%;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        #in2{
+            font-size: 30px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        #in3{
+            font-size: 30px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        #in4{
+            font-size: 27px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        #in5{
+            font-size: 22px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        #name,#email{
+		    padding:10px;
+		    margin-left:42%;
+            border-radius: 50px;
+            width: 33%;
+	    }
+	    #password{
+		    padding:10px;
+		    margin-left:30%;
+            border-radius: 50px;
+            width: 33%;
+	    }
+        #date{
+            padding: 10px;
+            margin-left: 24%;
+            width: 30%;
+            border-radius: 50px;
+            width: 33%;
+        }
+        #row{
+            font-size: 20px;
+        }
+        #submit{
+            font-size: 20px;
+            background-color: rgb(4, 55, 10);
+            color: aqua;
+        }
+
+
+        
+
+        
+    </style>
+</head>
+<body>
+
+    
+        
+    <div class="box1">
+        <h2 id="rf">REGISTRATION FORM</h2>
+    <form id="myform">
+
+        <label for="name" id="in1">Name</label>
+        <input type="text" id="name"  required ><br><br>
+
+        <label for="email" id="in2">Email</label>
+        <input type="email" id="email"  required ><br><br>
+
+        <label for="password" id="in3">Password</label>
+        <input type="password" id="password" required ><br><br>
+
+        <label for="date" id="in4">Date Of Birth</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <input type="checkbox" id="terms" required>
+        <label for="terms" id="in5" required>Accept terms and conditions</label><br><br>
+
+        <button type="submit" id="submit" onclick="AddData()">submit</button>
+    </form>
+    </div><br><br>
+    <div class="box2">
+        <h2 id="h">Table Entries</h2>
+        <table border="4" id="showtable">
+				<tr id="row">
+					<th id="th1">Name</th>
+					<th id="th1">Email</th>
+					<th id="th1">Password</th>
+					<th id="th1">dob</th>
+                    <th id="th1">AcceptedTerms</th>
+				</tr>
+		</table>
+    </div>
+    <script>
+        function AddData() {
+    var Name = document.getElementById("name").value;
+    var Email = document.getElementById("email").value;
+    var Password = document.getElementById("password").value;
+    var Dates = document.getElementById("date").value;
+    var Terms = document.getElementById("terms").checked?"Yes":"No";
+  
+    var year = new Date().getFullYear();
+    var birthYear = new Date(Dates).getFullYear();
+  
+   
+    var age = year - birthYear;
+    if(age <18 || age >55){
+      return alert("invalid age");
+    }
+    if(Name != "" && Email != "" && Password != "" && Dates != "" && Terms != "No" &&  age>= 18 && age <= 55) {
+      var table = document.getElementById("showtable");
+      var row = table.insertRow();
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
+      cell1.innerHTML = Name;
+      cell2.innerHTML = Email;
+      cell3.innerHTML = Password;
+      cell4.innerHTML = Dates;
+      cell5.innerHTML = Terms;
+      
+    }
+    else{
+        alert('fill all the details.');
+    }
+    
+    document.getElementById("myform").reset();
+  }
+    </script>
+    
+
+</body>
+</html>
